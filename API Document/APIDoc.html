@@ -9,7 +9,7 @@
 <body>
     <!--header-->
     <div id="header">
-        <h1 class="title"><strong>Cyer</strong><span>version1.0.0</span></h1>
+        <h1 class="title"><strong>Cyer</strong><span>version1.0.1</span></h1>
         <div class="summary" id="summary">
             <p>Cyer是一个轻量、小巧的js框架，精简易懂的API设计，支持链式调用，有点jQuery的味道。核心部分为选择器(selector)、dom操作、event机制。</p>
             <ul>
@@ -56,6 +56,10 @@
                                 <li><a href="#dom-width">width()</a></li>
                                 <li><a href="#dom-hide">hide()</a></li>
                                 <li><a href="#dom-show">show()</a></li>
+                                <li><a href="#dom-append">append(elem || string)</a></li>
+                                <li><a href="#dom-prepend">prepend(elem || string)</a></li>
+                                <li><a href="#dom-before">before(elem || string)</a></li>
+                                <li><a href="#dom-after">after(elem || string)</a></li>
                             </ul>
                         </li>
                         <li>
@@ -91,6 +95,10 @@
                         <li><a href="#dom-remove">remove()</a></li>
                         <li><a href="#event-bind">bind(type, callback)</a></li>
                         <li><a href="#event-unbind">unbind(type, callback)</a></li>
+                        <li><a href="#dom-append">append(elem || string)</a></li>
+                        <li><a href="#dom-prepend">prepend(elem || string)</a></li>
+                        <li><a href="#dom-before">before(elem || string)</a></li>
+                        <li><a href="#dom-after">after(elem || string)</a></li>
                     </ul>
                 </li>
                 <li>
@@ -362,6 +370,58 @@
                         <dd>显示隐藏的元素或元素集合，返回实例对象。</dd>
                         <dt>参数</dt>
                         <dd>Empty</dd>
+                        <dt>返回值</dt>
+                        <dd>Object</dd> 
+                    </dl>
+                </li>
+
+                <!--append-->
+                <li>
+                    <h3 id="dom-append">append()</h3>
+                    <dl>
+                        <dt>概述</dt>
+                        <dd>向匹配的元素内部追加节点或HTML内容(注意：追加的HTML内容或节点还是在该匹配元素内部，只不过是成为其最后一个子节点(当存在子节点时))。</dd>
+                        <dt>参数</dt>
+                        <dd>Object || String</dd>
+                        <dt>返回值</dt>
+                        <dd>Object</dd> 
+                    </dl>
+                </li>
+
+                <!--prepend-->
+                <li>
+                    <h3 id="dom-prepend">prepend()</h3>
+                    <dl>
+                        <dt>概述</dt>
+                        <dd>向匹配的元素内部前置节点或HTML内容(注意：前置的HTML内容或节点还是在该匹配元素内部，只不过是成为其第一个子节点(当存在子节点时))。</dd>
+                        <dt>参数</dt>
+                        <dd>Object || String</dd>
+                        <dt>返回值</dt>
+                        <dd>Object</dd> 
+                    </dl>
+                </li>
+
+                <!--before-->
+                <li>
+                    <h3 id="dom-before">before()</h3>
+                    <dl>
+                        <dt>概述</dt>
+                        <dd>把一个元素或HTML内容移动到匹配的元素之前。</dd>
+                        <dt>参数</dt>
+                        <dd>Object || String</dd>
+                        <dt>返回值</dt>
+                        <dd>Object</dd> 
+                    </dl>
+                </li>
+
+                 <!--after-->
+                <li>
+                    <h3 id="dom-after">after()</h3>
+                    <dl>
+                        <dt>概述</dt>
+                        <dd>把一个元素或HTML内容移动到匹配的元素之后。</dd>
+                        <dt>参数</dt>
+                        <dd>Object || String</dd>
                         <dt>返回值</dt>
                         <dd>Object</dd> 
                     </dl>
