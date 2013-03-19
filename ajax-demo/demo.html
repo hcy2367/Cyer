@@ -1,0 +1,55 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en">
+<head>
+	<meta http-equiv="Content-Type" content="text/html;charset=UTF-8">
+	<title>ajax测试</title>
+	<style type="text/css">
+		* {margin: 0; padding: 0;}
+		body {
+			font: 12px /1.6 Arial;
+		}
+		h3 {
+			margin-top: 10px;
+			border-bottom: 2px solid #ccc;
+		}
+		#resText {
+			background: #ccc;
+			color: #fff;
+			height: 30px;
+			line-height: 30px;
+			padding-left: 10px;
+			text-align: left;
+		}
+	</style>
+	<script type="text/javascript" src="../Cyer-1.0.2.js"></script>
+	<script type="text/javascript" src="../ajax.js"></script>
+	<script type="text/javascript">
+		window.onload = function() {
+			var btn = document.getElementById("send"),
+				resText = document.getElementById("resText");
+			btn.onclick = function() {
+				$.io.ajax({
+					url: "test.html",
+					method: "POST",
+					onSuccess: function(data) {
+						alert("success!");
+						resText.innerHTML = data;
+					},
+					onError: function() {
+						alert("something is error");
+					}
+				});
+			};
+		};		
+	</script>
+
+</head>
+<body>
+	<form id="form" action="get1.php">
+		<input type="button" id="send" value="ajax测试" />
+	</form>
+
+	<h3>返回的字符串：</h3>
+	<div id="resText"> </div>
+</body>
+</html>
