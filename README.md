@@ -35,9 +35,9 @@
 
 <hr>
 <h4>v1.0.2版本增加的API：</h4>
-新增全局函数：<strong>$.IO</strong>
-新增实例对象：<strong>$.io = new $.IO()</strong>;
-新增API：<strong>$.io.ajax()</strong>
+<p>新增全局函数：<strong>$.IO</strong></p>
+<p>新增实例对象：<strong>$.io = new $.IO()</strong></p>
+<p>新增API：<strong>$.io.ajax()</strong></p>
 
 修改的API：<strong>$.each()</strong>
 
