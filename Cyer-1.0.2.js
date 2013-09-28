@@ -632,7 +632,6 @@
 
 	};
 
-
 	//因为$.prototype = $.fn，所以使用new操作符调用init构造函数后返回的实例对象共享$原型的方法
 	$.fn.init.prototype = $.fn;
 
@@ -1331,7 +1330,6 @@
 	}
 
 
-	//返回$
 	return $;//$===Cyer
 
 })(window);
