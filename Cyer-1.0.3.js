@@ -8,7 +8,7 @@
 * For details, see: http://www.gnu.org/licenses/lgpl-3.0.html
 */
 
-;(function(window, undefined) {
+(function(window, undefined) {
 
 	// 调用$或Cyer构造器时,返回的实例对象共享(拥有)$原型对象的方法(因为:$.fn.init.prototype = $.fn = $.prototype;)
 	var $ = function(selector, context) {
@@ -1406,7 +1406,6 @@
 				? elem.defaultView || elem.parentWindow
 				: false;
 	}
-
 
 	// 把$、Cyer挂在全局对象window下，这样在外部也能访问到
 	if (window.$ === undefined) {
