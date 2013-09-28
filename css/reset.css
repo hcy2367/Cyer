@@ -41,4 +41,5 @@ body,button,input,select,textarea{font:12px/1.6 Arial,Helvetica,sans-serif;_font
 处于标准模式时，body以html标签为高度参照，html以窗口为高度参照，所以html要设置100%，body高度才会100%占满整个浏览器窗口*/
 html, body {
 	height: 100%;
+	background: #FFF;
 }
