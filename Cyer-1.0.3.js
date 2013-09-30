@@ -19,12 +19,12 @@
 		readyBound = false, // 判断是否绑定过ready事件
 		readyList = [], // 存放DOM ready后的(回调)函数
 		domReady = function(fn) { // dom ready(就绪)事件
-			var doScroll = document.documentElement.doScroll, // 获取doScroll事件(IE特有)
-				eventType = doScroll ? "onreadystatechange" : "DOMContentLoaded", // 事件类型兼容性处理
+			var doScroll = document.documentElement.doScroll, 
+				eventType = doScroll ? "onreadystatechange" : "DOMContentLoaded", 
 				// 触发ready事件
 				fireReady = function() {
 					if (isReady) return; // 如果DOM已经处于就绪状态，则终止执行
-					isReady = true; // 否则令DOM处于就绪状态
+					isReady = true; 
 
 					if (readyList) { // DOM就绪后调用的回调函数
 						var i = 0,
@@ -38,18 +38,18 @@
 					}
 				},
 
-				// 检测doScroll事件
+				// 检测doScroll事件判断是否达到就绪状态
 				doScrollCheck = function() {
 					try {
-						doScroll("left"); // 向左滚动
-						fireReady(); // 触发ready事件
+						doScroll("left"); 
+						fireReady(); 
 					} catch (e) {
-						setTimeout(doScrollCheck, 1); // 快速不断地调用本身，直至dom就绪
+						setTimeout(doScrollCheck, 1); 
 						return;
 					}
 				};
 
-			// 如果没有绑定过ready事件
+			// 没有绑定过ready事件
 			if (!readyBound) {
 				readyBound = true;
 
@@ -60,16 +60,16 @@
 
 				if (document.addEventListener) { // W3C方法
 					var domReady = function() {
-						document.removeEventListener(eventType, domReady, false); // 删除文档的事件
-						fireReady(); // 触发ready事件
+						document.removeEventListener(eventType, domReady, false); // 避免重复触发事件
+						fireReady(); 
 					};
-					document.addEventListener(eventType, domReady, false); // dom就绪事件
+					document.addEventListener(eventType, domReady, false); // dom 就绪事件
 					window.addEventListener("load", fireReady, false); // window onload事件
 				} else if (document.attachEvent) { // IE方法
 					var stateChange = function() {
 						if (document.readyState === "complete") {
 							document.attachEvent(eventType, stateChange);
-							fireReady(); // 触发ready事件
+							fireReady(); 
 						}
 					};
 					document.attachEvent(eventType, stateChange); // dom 就绪事件
@@ -86,7 +86,7 @@
 				}
 			}
 
-			// 如果DOM就绪，则在window上调用readyList队列里的函数，并传入easyJS构造器参数
+			// 如果DOM就绪，则在window上调用readyList队列里的函数
 			if (isReady) {
 				fn.call(window);
 			} else {
@@ -160,7 +160,7 @@
 				for (i = 0, elemsLen = elems.length; i < elemsLen; i++) {
 					matchAry.push(elems[i]);
 				}
-				this[0] = matchAry; // 把匹配的数组赋给实例对象的第一个属性
+				this[0] = matchAry; 
 				return this;
 			
 			// 匹配"tagName.className"的情况
@@ -176,7 +176,7 @@
 					}
 				}
 
-				this[0] = matchAry; // 把匹配的数组赋给实例对象的第一个属性
+				this[0] = matchAry; 
 				return this;
 			}
 			
@@ -663,7 +663,7 @@
 				}
 			}
 
-			//w3c方法
+			// w3c方法
 			var range = elem.ownerDocument.createRange(),
 				frag = null; // 文档碎片(保存html内容)
 			switch (where) {
@@ -923,15 +923,15 @@
 	$.getElemByID = function(id, root) {
 		var elem = document.getElementById(id);
 
-		// 如果存在根节点
+		// 如果存在根节点，且根节点包含elem节点
 		if (root) {
-			if ($.contains(root, elem)) { //且根节点包含elem节点
+			if ($.contains(root, elem)) {
 				return elem;
 			}
 			return null;
 		}
 
-		return elem; //否则直接返回
+		return elem; 
 	};
 
 	/**
@@ -1154,11 +1154,11 @@
 	* @return	{Any}			如果无参数data则返回缓存数据
 	*/
 	$.data = function(elem, name, data) {
-		var cache = $.cache, // cache变量引用一个空对象(缓存对象)
-			id = uuid(elem); // 获取元素的唯一身份
+		var cache = $.cache, // 缓存对象
+			id = uuid(elem); // 获取元素的唯一身份(随机属性)
 
 		if (name === undefined) {
-			return cache[id]; // 没有缓存名称(name)参数时，为读取缓存数据(根据元素所标记的id)
+			return cache[id]; // 没有缓存名称(name)参数时，为读取缓存数据
 		}
 
 		if (!cache[id]) {
@@ -1166,7 +1166,7 @@
 		}
 
 		if (data !== undefined) {
-			cache[id][name] = data; // 有data参数时，为写入缓存数据(根据元素所标记的id和缓存名称)
+			cache[id][name] = data; // 有data参数时，为写入缓存数据(根据元素id属性和缓存名称)
 		}
 
 		return cache[id][name];
@@ -1179,28 +1179,28 @@
 	*/
 	$.removeData = function(elem, name) {
 		var empty = true,
-			expando = $.expando,
-			cache = $.cache, // cache变量引用一个空对象(缓存对象)
-			id = uuid(elem), // 获取元素的唯一身份
+			expando = $.expando, // 随机数
+			cache = $.cache,
+			id = uuid(elem),
 			thisCache = id && cache[id];
 
-		if (!thisCache) {
-			return; // 终止执行
+		if (!thisCache) { // 不存在缓存则终止执行
+			return; 
 		}
 
-		if (name) { // 如果存在缓存名称时，则删除该名称对应的值(缓存数据)
+		if (name) { // 存在缓存名称时，则删除该名称对应的值(缓存数据)
 			delete thisCache[name];
 			for (var n in thisCache) {
 				empty = false;
 			}
 
 			if (empty) {
-				delete $.cache[id]; // 删除缓存名称
+				delete $.cache[id]; 
 			}
-		} else { // 如果不存在缓存名称
+		} else { // 不存在缓存名称
 			delete cache[id];
 
-			if (elem.removeAttribute) { // 删除元素的属性
+			if (elem.removeAttribute) { 
 				elem.removeAttribute(expando);
 			} else {
 				elem[expando] = null;
@@ -1208,7 +1208,7 @@
 		}
 	};
 
-	$.uuid = 0; // id标识
+	$.uuid = 0; // 全局递增id
 	$.cache = {}; // 数据缓存对象
 	$.expando = '@cache' + + new Date; // 生成Number类型的随机数
 
@@ -1242,7 +1242,7 @@
 	            data;
 
 	        // data是一个对象，保存添加到元素的事件类型type(即type是data的一个属性，且为一个对象)
-	        data = $.data(elem, '@events') || $.data(elem, '@events', {});//获取元素事件缓存的数据
+	        data = $.data(elem, '@events') || $.data(elem, '@events', {}); // 获取元素事件缓存的数据
 	            
 	        // 取得元素的数据缓存cache(该cache是一个对象，保存着elem、listeners、handler属性，默认为一个空对象)
 	        cache = data[type] = data[type] || {};
@@ -1276,7 +1276,7 @@
 	            empty = true,
 	            data = $.data(elem, '@events');
 	        
-	        // 如果元素不存在缓存的数据,则终止执行，返回undefined。
+	        // 如果元素不存在缓存的数据,则终止执行
 	        if (!data) {
 	            return;
 	        }
