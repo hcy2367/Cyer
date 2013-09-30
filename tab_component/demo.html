@@ -1,0 +1,60 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
+<html lang="en">
+<head>
+	<meta http-equiv="Content-Type" content="text/html;charset=UTF-8">
+	<title>tab选项卡</title>
+	<link rel="stylesheet" type="text/css" href="css/reset.css" />
+	<link rel="stylesheet" type="text/css" href="css/common.css" />
+	<link rel="stylesheet" type="text/css" href="css/tab.css" />
+	<script type="text/javascript" src="js/Cyer-1.0.3.js"></script>
+	<script type="text/javascript" src="js/tab.js"></script>
+	<script type="text/javascript">
+		//页面加载完毕后开始执行
+		$.event.add(window, "load", function() {
+			//测试
+			var tab = new Tab({
+				tabTitle: "tab-title",
+				tabContent: "tab-content",
+				tabContents: "tab-content-item",
+				activeName: "active",
+				delay: 300, 
+				eventType: "click"
+			});
+			
+			tab.show();
+
+		});
+
+	</script>
+</head>
+<body>
+	<div class="tab">
+		<ul class="tab-title clearfix" id="tab-title">
+			<li class="tab-title-item active"><!--默认显示第一项标题-->
+				<a href="#home">Home</a>
+			</li>
+			<li class="tab-title-item">
+				<a href="#profile">Profile</a>
+			</li>
+			<li class="tab-title-item">
+				<a href="#messages">Messages</a>
+			</li>
+			<li class="tab-title-item">
+				<a href="#settings">Settings</a>
+			</li>
+			<li class="tab-title-item" id="tab-title-item-last">
+				<a href="#loginOut">login out</a>
+			</li>
+			
+		</ul>
+		<div class="tab-content" id="tab-content">
+			<div class="active tab-content-item" id="home">主页</div><!--默认显示第一项内容-->
+			<div class="tab-content-pane tab-content-item" id="profile">文件</div>
+			<div class="tab-content-pane tab-content-item" id="messages">信息</div>
+			<div class="tab-content-pane tab-content-item" id="settings">配置</div>
+			<div class="tab-content-pane tab-content-item" id="loginOut">退出</div>
+			
+		</div>
+	</div> <!-- .tab -->
+</body>
+</html>
